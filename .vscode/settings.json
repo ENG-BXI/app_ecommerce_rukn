@@ -1,0 +1,13 @@
+{
+  "bloc.newBlocTemplate.type": "auto",
+  "bloc.newCubitTemplate.type": "auto",
+  "cSpell.words": [
+    "Abdalrhman",
+    "Firestore",
+    "getallposts",
+    "lerp",
+    "Muneer",
+    "tbyaan"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.22.0"
+}
