@@ -10,8 +10,10 @@ import '../layout/mobileLayout/customGridView.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+
     BlocProvider.of<RukinAppCubit>(context).getProducts();
     BlocProvider.of<RukinAppCubit>(context).getCategorys();
     return Scaffold(

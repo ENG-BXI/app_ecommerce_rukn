@@ -16,6 +16,7 @@ class RukinAppCubit extends Cubit<RukinAppState> {
       products = await Diohelper.getProuct();
       emit(getProductsLoadedState());
     } catch (e) {
+      debugPrint("======================= ${e.toString()}");
       emit(getProductsErrorState());
     }
   }
@@ -23,12 +24,12 @@ class RukinAppCubit extends Cubit<RukinAppState> {
   List<String> categorys = [];
   getCategorys() async {
     emit(getCategoryLoadingState());
-
+    categorys = [];
     try {
       await _algorithmForAdd_category_ALL_forLIst(list: categorys);
       emit(getCategoryLoadedState());
     } catch (e) {
-      print(e.toString());
+      debugPrint("============== in getCategoryBloc$e");
       debugPrint("error cubit category");
       emit(getCategoryErrorState());
     }
@@ -55,19 +56,17 @@ class RukinAppCubit extends Cubit<RukinAppState> {
       emit(getProductsWithCategoryLoadingState());
       products = [];
       try {
-        products = await Diohelper.getProductByCategory(category: title);
+        products = await Diohelper.getProuct(category: title);
         emit(getProductsWithCategoryLoadedState());
       } catch (e) {
         emit(getProductsWithCategoryErrorState());
       }
     }
-    print("selected item = $SelectItem ");
   }
 
   changeCategoryItem({required int index}) {
     SelectItem = index;
 
-    print(SelectItem);
     emit(changeCategoryItemState());
   }
 }

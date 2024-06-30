@@ -38,14 +38,11 @@ class adaptiveLayout_Sliver extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverLayoutBuilder(builder: (context, constraints) {
       if (constraints.crossAxisExtent > 1200) {
-        print("desktop");
         return DesktopLayout(context);
       } else if (constraints.crossAxisExtent < 1200 &&
           constraints.crossAxisExtent > 900) {
-        print("tablet");
         return TabletLayout(context);
       } else {
-        print("mobile");
         return MobileLayout(context);
       }
     });

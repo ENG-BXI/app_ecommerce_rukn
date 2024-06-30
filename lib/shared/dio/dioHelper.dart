@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 
 class Diohelper {
   static Dio dio = Dio(BaseOptions(baseUrl: "https://fakestoreapi.com/"));
-  static Future<List<productModel>> getProuct() async {
+  static Future<List<productModel>> getProuct({String? category}) async {
     late Response response;
     try {
-      response = await dio.get("products");
+      response = await dio.get(category == null?"products":"products/category/$category");
     } catch (e) {
       debugPrint("error ======================== ${e.toString()}");
     }
+
     List<productModel> listModel = [];
     response.data.forEach((element) {
       listModel.add(productModel.fromJson(element));
     });
+
     return listModel;
   }
 
@@ -32,18 +34,18 @@ class Diohelper {
     return listModels;
   }
 
-  static Future<List<productModel>> getProductByCategory(
-      {required String category}) async {
-    late Response response;
-    try {
-      response = await dio.get("products/category/$category");
-    } catch (e) {
-      debugPrint("error ======================== ${e.toString()}");
-    }
-    List<productModel> listModel = [];
-    response.data.forEach((element) {
-      listModel.add(productModel.fromJson(element));
-    });
-    return listModel;
-  }
+  // static Future<List<productModel>> getProductByCategory(
+  //     {required String category}) async {
+  //   late Response response;
+  //   try {
+  //     response = await dio.get("products/category/$category");
+  //   } catch (e) {
+  //     debugPrint("error ======================== ${e.toString()}");
+  //   }
+  //   List<productModel> listModel = [];
+  //   response.data.forEach((element) {
+  //     listModel.add(productModel.fromJson(element));
+  //   });
+  //   return listModel;
+  // }
 }

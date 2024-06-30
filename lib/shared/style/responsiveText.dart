@@ -6,7 +6,6 @@ double responsiveText({required BuildContext context,required double fontSize}) 
   double ResponsiveText = fontSize * scaleFactor;
   double lowerTextSize = fontSize * .8;
   double upperTextSize = fontSize * 1.2;
-  debugPrint("scaleFactor = $scaleFactor ,ResponsiveText = $ResponsiveText , lowerTextSize = $lowerTextSize , upperTextSize = $upperTextSize ");
   return ResponsiveText.clamp(lowerTextSize, upperTextSize);
 }
 

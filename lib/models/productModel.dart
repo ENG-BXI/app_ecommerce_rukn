@@ -1,3 +1,5 @@
+
+
 class productModel {
   late String title;
   late double price;
@@ -7,12 +9,13 @@ class productModel {
   late ratingProduct rating;
 
   productModel.fromJson(Map<String, dynamic> json) {
-    this.title = json["title"];
-    this.price = json["price"];
-    this.description = json["description"];
-    this.category = json["category"];
-    this.image = json["image"];
-    this.rating = ratingProduct.fromJson(json["rating"]);
+    title = json["title"];
+    //this is error in api its return int and double num 
+    price = json["price"].toDouble();
+    description = json["description"];
+    category = json["category"];
+    image = json["image"];
+    rating = ratingProduct.fromJson(json["rating"]);
   }
 }
 
@@ -20,8 +23,9 @@ class ratingProduct {
   late double rate;
   late int count;
   ratingProduct.fromJson(Map<String, dynamic> json) {
-    this.rate = json["rate"];
-    this.count = json["count"];
+    //this is error in api its return int and double num 
+    rate = json["rate"].toDouble();
+    count = json["count"];
   }
 }
 
